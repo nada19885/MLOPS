@@ -1,0 +1,51 @@
+data:
+  train_file: data/train.csv
+  test_file: data/test.csv
+  features:
+  - Pclass
+  - Sex
+  - Age
+  - SibSp
+  - Parch
+  - Fare
+  - Embarked
+  target: Survived
+  test_size: 0.2
+  random_state: 42
+preprocessing:
+  numeric_features:
+  - Age
+  - SibSp
+  - Parch
+  - Fare
+  numeric_transformer:
+    imputer_strategy: median
+    scaler: StandardScaler
+  categorical_features:
+  - Pclass
+  - Sex
+  - Embarked
+  categorical_transformer:
+    imputer_strategy: most_frequent
+    onehot:
+      drop: first
+      sparse_output: false
+      handle_unknown: ignore
+models:
+  logistic_regression:
+    _target_: sklearn.linear_model.LogisticRegression
+    max_iter: 1000
+    random_state: 42
+  random_forest:
+    _target_: sklearn.ensemble.RandomForestClassifier
+    n_estimators: 100
+    random_state: 42
+evaluation:
+  cross_validation:
+    cv: 5
+    scoring: accuracy
+output:
+  model_path: models
+  model_file: ${output.model_path}/${model_name}_pipeline.joblib
+  submission_path: submissions
+  submission_file: ${output.submission_path}/submission_${model_name}.csv
