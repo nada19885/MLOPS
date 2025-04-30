@@ -24,5 +24,5 @@ evaluation:
     cv: 5
     scoring: accuracy
 output:
-  model_path: models/model.joblib
-  submission_path: output/submission.csv
+  model_path: outputs/models
+  submission_path: outputs/submissions
