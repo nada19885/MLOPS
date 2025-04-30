@@ -1,18 +1,28 @@
-data.train_file: "train.csv"
-data.test_file: "test.csv"
-data.features: ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked"]
-data.target: "Survived"
-data.test_size: 0.2
-data.random_state: 42
-preprocessing.numeric_features: ["Age", "SibSp", "Parch", "Fare"]
-preprocessing.numeric_transformer.imputer_strategy: "median"
-preprocessing.categorical_features: ["Pclass", "Sex", "Embarked"]
-preprocessing.categorical_transformer.imputer_strategy: "most_frequent"
-models.logistic_regression.max_iter: 1000
-models.logistic_regression.random_state: 42
-models.random_forest.n_estimators: 100
-models.random_forest.random_state: 42
-evaluation.cross_validation.cv: 5
-evaluation.cross_validation.scoring: "accuracy"
-output.model_path: "models"
-output.submission_path: "submissions"
+data:
+  random_state: 42
+  train_file: project/data/train.csv
+  test_file: project/data/test.csv
+  test_size: 0.2
+  target: target_column
+  features: ["feature1", "feature2", "feature3"]
+models:
+  logistic_regression:
+    random_state: 42
+    max_iter: 1000
+  random_forest:
+    random_state: 42
+    n_estimators: 100
+preprocessing:
+  numeric_features: ["feature1", "feature2"]
+  numeric_transformer:
+    imputer_strategy: "median"
+  categorical_features: ["feature3"]
+  categorical_transformer:
+    imputer_strategy: "most_frequent"
+evaluation:
+  cross_validation:
+    cv: 5
+    scoring: accuracy
+output:
+  model_path: models/model.joblib
+  submission_path: output/submission.csv
