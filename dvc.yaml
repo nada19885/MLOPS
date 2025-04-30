@@ -1,31 +1,22 @@
 stages:
   train:
-    cmd: python project/trainer.py
+    cmd: python trainer.py
     deps:
-    - project/data/test.csv
-    - project/data/train.csv
-    - project/config/titanic.yaml
-    outs:
-    - ../project/outputs/models/logistic_regression_pipeline.pkl
-    - ../project/outputs/models/random_forest_pipeline.pkl
-    - ../project/outputs/submissions/logistic_regression_submission.csv
-    - ../project/outputs/submissions/random_forest_submission.csv
+      - trainer.py
+      - params.yaml
+      - data/train.csv
+      - data/test.csv
     params:
-    - data.train_file
-    - data.test_file
-    - data.features
-    - data.target
-    - data.test_size
-    - data.random_state
-    - preprocessing.numeric_features
-    - preprocessing.numeric_transformer.imputer_strategy
-    - preprocessing.categorical_features
-    - preprocessing.categorical_transformer.imputer_strategy
-    - models.logistic_regression.max_iter
-    - models.logistic_regression.random_state
-    - models.random_forest.n_estimators
-    - models.random_forest.random_state
-    - evaluation.cross_validation.cv
-    - evaluation.cross_validation.scoring
-    - output.model_path
-    - output.submission_path
+      - data
+      - models
+      - preprocessing
+      - evaluation
+      - output
+    outs:
+      - outputs/models/:
+          persist: true
+      - outputs/submissions/:
+          persist: true
+    metrics:
+      - metrics.json:
+          cache: false

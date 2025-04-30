@@ -10,12 +10,13 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
+from hydra.core.hydra_config import HydraConfig
 
 
 @hydra.main(config_path="config", config_name="titanic")
 def main(cfg):
 
-    os.chdir("/teamspace/studios/this_studio/project")
+    os.chdir(HydraConfig.get().runtime.cwd)
 
     train_df = pd.read_csv(cfg.data.train_file)
     test_df = pd.read_csv(cfg.data.test_file)

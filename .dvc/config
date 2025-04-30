@@ -1,0 +1,10 @@
+[core]
+    remote = dagshub_remote
+['remote "origin"']
+    url = s3://dvc
+    endpointurl = https://dagshub.com/excellence.nadamaher/MLOPS.s3
+['remote "dagshub_remote"']
+    url = https://dagshub.com/excellence.nadamaher/MLOPS.dvc
+    auth = basic
+    user = excellence.nadamaher
+    password = 31deae1cafd18c666509caa9cea0b1db13ca2df0
