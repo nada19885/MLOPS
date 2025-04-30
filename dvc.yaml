@@ -6,10 +6,10 @@ stages:
     - project/data/train.csv
     - project/config/titanic.yaml
     outs:
-    - project/outputs/models/logistic_regression_pipeline.pkl
-    - project/outputs/models/random_forest_pipeline.pkl
-    - project/outputs/submissions/logistic_regression_submission.csv
-    - project/outputs/submissions/random_forest_submission.csv
+    - ../project/outputs/models/logistic_regression_pipeline.pkl
+    - ../project/outputs/models/random_forest_pipeline.pkl
+    - ../project/outputs/submissions/logistic_regression_submission.csv
+    - ../project/outputs/submissions/random_forest_submission.csv
     params:
     - data.train_file
     - data.test_file
