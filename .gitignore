@@ -1,2 +1,4 @@
 project/data/*.csv
 !project/data/*.dvc
+outputs/*
+!outputs/**/*.dvc
